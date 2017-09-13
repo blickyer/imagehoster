@@ -1,6 +1,6 @@
 import config from 'config'
-import {s3} from 'app/server/amazon-bucket'
-import {missing, getRemoteIp, limit, getObjectUrl} from 'app/server/utils-koa'
+import {s3, getObjectUrl} from 'app/server/amazon-bucket'
+import {missing, getRemoteIp, limit} from 'app/server/utils-koa'
 
 const {uploadBucket} = config
 
