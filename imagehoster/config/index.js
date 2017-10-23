@@ -23,6 +23,9 @@ const config = {
     uploadBucket: process.env.STEEMIT_IMAGEPROXY_BUCKET_UPLOAD || 'steemit-dev-imageproxy-upload',
     webBucket: process.env.STEEMIT_IMAGEPROXY_BUCKET_WEB || 'steemit-dev-imageproxy-web',
     thumbnailBucket: process.env.STEEMIT_IMAGEPROXY_BUCKET_THUMBNAIL || 'steemit-dev-imageproxy-thumbnail',
+    uploadUrl: process.env.STEEMIT_IMAGEPROXY_URL_UPLOAD,
+    webUrl: process.env.STEEMIT_IMAGEPROXY_URL_WEB,
+    thumbnailUrl: process.env.STEEMIT_IMAGEPROXY_URL_THUMBNAIL,
 }
 
 if(config.testKey) {

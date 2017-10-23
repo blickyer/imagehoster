@@ -1,5 +1,6 @@
 
 import AWS from 'aws-sdk'
+import config from 'config'
 
 export const s3 = new AWS.S3()
 
@@ -33,6 +34,19 @@ export function waitFor(method, params/*, responseHeaders*/) {
     })
 }
 
+const bucketUrls = {}
+for (const t of ['upload', 'web', 'thumbnail']) {
+    const bucket = config[`${ t }Bucket`]
+    let url = config[`${ t }Url`]
+    if (url) {
+        if (url.slice(-1) !== '/') {
+            url += '/'
+        }
+        bucketUrls[bucket] = url
+    }
+}
+
 export function getObjectUrl({Key, Bucket}) {
-    return `https://${ Bucket }.s3.amazonaws.com/${ Key }`
+    const url = bucketUrls[Bucket] || `https://${ Bucket }.s3.amazonaws.com/`
+    return url + Key
 }
